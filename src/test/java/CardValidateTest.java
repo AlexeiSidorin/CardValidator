@@ -3,6 +3,8 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -18,8 +20,7 @@ public class CardValidateTest {
         $("[class='checkbox__box']").click();
         $(byText("Продолжить")).click();
         Configuration.timeout = 6000;
-        $(Selectors.withText("Ваша заявка успешно отправлена!")).shouldBe(visible);
-
+        $(Selectors.withText("Ваша заявка успешно отправлена!")).shouldBe(visible, Duration.ofSeconds(6));
     }
 
 
